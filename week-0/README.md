@@ -10,20 +10,20 @@
 
 ####Step1
 - created EC2\
-- created custom security group ![security_group](https://github.com/phpadventure/aws-course/blob/master/week-0/screenshot/custom-security.png) \
-- attached securiity group ![security_attched](https://github.com/phpadventure/aws-course/blob/master/week-0/screenshot/instance-with-security.png) \ 
+- created custom security group ![security_group](https://github.com/phpadventure/aws-course/blob/master/week-0/screenshots/custom-security.png) \
+- attached securiity group ![security_attched](https://github.com/phpadventure/aws-course/blob/master/week-0/screenshots/instance-with-security.png) \ 
 - test connection with telnet for 22 and 80 (newly added security group) \
-![ssh](https://github.com/phpadventure/aws-course/blob/master/week-0/screenshot/success-22.png) \
-![web](https://github.com/phpadventure/aws-course/blob/master/week-0/screenshot/succes-80-but-no-service.png) \
+![ssh](https://github.com/phpadventure/aws-course/blob/master/week-0/screenshots/success-22.png) \
+![web](https://github.com/phpadventure/aws-course/blob/master/week-0/screenshots/succes-80-but-no-service.png) \
 
 - delete all => terminate instance \
 
 ####Step2
 - create yaml for CloudFormation \
 - execute with web console\
-![web-console-events](https://github.com/phpadventure/aws-course/blob/master/week-0/screenshot/web-console-events.png) \
-![web-console-output](https://github.com/phpadventure/aws-course/blob/master/week-0/screenshot/web-console-output.png) \
-![ssh](https://github.com/phpadventure/aws-course/blob/master/week-0/screenshot/web-console-stack-ready.png) \
+![web-console-events](https://github.com/phpadventure/aws-course/blob/master/week-0/screenshots/web-console-events.png) \
+![web-console-output](https://github.com/phpadventure/aws-course/blob/master/week-0/screenshots/web-console-output.png) \
+![ssh](https://github.com/phpadventure/aws-course/blob/master/week-0/screenshots/web-console-stack-ready.png) \
 
 ####Step3
 - Instal aws cli \
