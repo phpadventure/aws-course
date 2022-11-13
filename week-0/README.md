@@ -26,4 +26,19 @@
 ![ssh](https://github.com/phpadventure/aws-course/blob/master/week-0/screenshots/web-console-stack-ready.png) \
 
 ####Step3
-- Instal aws cli \
+- Install aws cli https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html \
+- curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg" \
+- sudo installer -pkg AWSCLIV2.pkg -target \
+- configure defualt profile (will be located ~/.aws/credentials) \
+`aws configure` \
+to create secrets got IAM-> Users-> Security credentials->access key \
+- aws API for cloudformation https://docs.aws.amazon.com/cli/latest/reference/cloudformation/index.html \
+- execute from console \
+`aws cloudformation create-stack --stack-name week0-ec2 --template-body file:///Users/adobush/development/aws-course/aws-course/week-0/ec2-instance.yaml` \
+- describe stack \
+`aws cloudformation describe-stacks --stack-name week0-ec2` \
+- delete stack \
+`aws cloudformation delete-stack --stack-name week0-ec2` \
+![stack-with-cli](https://github.com/phpadventure/aws-course/blob/master/week-0/screenshots/stack-with-cli.png) \
+
+
