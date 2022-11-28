@@ -1,0 +1,1 @@
+instance_ssh_key = "andriy.aws"
