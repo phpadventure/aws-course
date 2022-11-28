@@ -12,6 +12,6 @@
 ![deployed](https://github.com/phpadventure/aws-course/blob/master/week-2/screenshots/deployed.png) \
 - `terraform destroy` to destroy \
 - `terraform plan` to see changes \
-- `terraform state list => terraform state show <name>` to get ouput detials \
-- ssh ans see `sudo ssh ec2-user@34.221.122.27  -i ~/.ssh/andriy.aws.pem` \
+- `terraform state list => terraform state show <name>` to get ouput details \
+- ssh ans see test file in ec2 instance uplodaed from user_data `sudo ssh ec2-user@34.221.122.27  -i ~/.ssh/andriy.aws.pem` \
 ![ec2-file](https://github.com/phpadventure/aws-course/blob/master/week-2/screenshots/ec2-file.png) \
