@@ -1,3 +1,4 @@
+######RDS+DYNAMO-DB
 - Give cli user access to DynamoDb, RDS, s3, ec2. \
 - Create `init-s3.sh` script to create s3 bucket and upload files \
 - `download-from-s3-to-ec2.sh` - moves files to ec2 instance and install postgress client in user data of terraform \

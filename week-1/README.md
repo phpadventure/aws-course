@@ -1,3 +1,4 @@
+######Autosaclling and user data
 - Create autoscalling template and group. \
 - Note security group worked only with Group Id \
 - User data should be base 64 encoded \

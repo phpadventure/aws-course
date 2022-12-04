@@ -1,3 +1,4 @@
+######CloudFormation
 - use US West (Oregon) Region (us-west-2) \
 - Create EC2 instance through console in AWS \
 - Create script for cloudformation \
