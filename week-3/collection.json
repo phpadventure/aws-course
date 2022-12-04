@@ -1,0 +1,61 @@
+{
+    "myDummyCollection" : [
+        {
+            "PutRequest" : {
+                "Item" : {
+                    "partKey": {
+                      "S": "z1"
+                    },
+                    "address": {
+                      "M": {
+                        "number": {
+                          "N": "1"
+                        },
+                        "street": {
+                          "S": "Zelena"
+                        }
+                      }
+                    }
+                  }
+            }
+        },
+        {
+            "PutRequest" : {
+                "Item" : {
+                    "partKey": {
+                      "S": "n2"
+                    },
+                    "address": {
+                      "M": {
+                        "number": {
+                          "N": "2"
+                        },
+                        "street": {
+                          "S": "Naykova"
+                        }
+                      }
+                    }
+                  }
+            }
+        },
+        {
+            "PutRequest" : {
+                "Item" : {
+                    "partKey": {
+                      "S": "ch3"
+                    },
+                    "address": {
+                      "M": {
+                        "number": {
+                          "N": "3"
+                        },
+                        "street": {
+                          "S": "Chornovola"
+                        }
+                      }
+                    }
+                  }
+            }
+        }
+    ]
+}
