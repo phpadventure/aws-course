@@ -20,6 +20,11 @@ variable "instance_ssh_key" {
     type = string
 }
 
+variable "db_pw" {
+    description = "DB  password"
+    type = string
+}
+
 resource "aws_security_group" "my_group_ssh_http" {
     description = "Enable HTTP access via port 80 + SSH access"
     name = "security_group_ssh_http"
@@ -35,6 +40,27 @@ resource "aws_security_group" "my_group_ssh_http" {
         description      = "SSH from VPC"
         from_port        = 22
         to_port          = 22
+        protocol         = "tcp"
+        cidr_blocks      = ["0.0.0.0/0"]
+    }
+
+    egress {
+        from_port        = 0
+        to_port          = 0
+        protocol         = "-1"
+        cidr_blocks      = ["0.0.0.0/0"]
+        ipv6_cidr_blocks = ["::/0"]
+    }
+}
+
+resource "aws_security_group" "my_security_group_rds" {
+    description = "Enable Postgres access"
+    name = "my_security_group_rds"
+
+    ingress {
+        description      = "Postgresql"
+        from_port        = 5432
+        to_port          = 5432
         protocol         = "tcp"
         cidr_blocks      = ["0.0.0.0/0"]
     }
@@ -94,11 +120,24 @@ resource "aws_dynamodb_table" "myDummyCollection-table" {
     }
 }
 
+resource "aws_db_instance" "postgresql_rds_test" {
+  allocated_storage    = 10
+  engine               = "postgres"
+  instance_class       = "db.t3.micro"
+  username             = "root"
+  password             = var.db_pw
+  skip_final_snapshot  = true
+  vpc_security_group_ids = [aws_security_group.my_security_group_rds.id]
+}
+
 output "ec2_ip" {
     value = aws_instance.my-instance.public_ip
 }
 
+output "rds_endpoint" {
+    value = aws_db_instance.postgresql_rds_test.address
+}
 
-#rds + security group
-#output rds ip
-
+output "rds_port" {
+    value = aws_db_instance.postgresql_rds_test.port
+}

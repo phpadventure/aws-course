@@ -1,13 +1,12 @@
-CREATE DATABASE week_4_1;
+CREATE DATABASE week_4_5;
 
-use week_4_1;
+\c week_4_5;
 
 CREATE TABLE cars (
-    id int(11) NOT NULL AUTO_INCREMENT,
-    name varchar(255),
-    PRIMARY KEY (ID)
+    id SERIAL PRIMARY KEY,
+    name varchar(255)
 );
 
-INSERT INTO cars ("name") VALUES("bmw"), ("audi"), ("vw");
+INSERT INTO cars (name) VALUES ('bmw'), ('audi'), ('vw');
 
 SELECT * FROM cars;
