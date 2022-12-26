@@ -34,7 +34,7 @@ module "ec2_template_private" {
 
   instance_ssh_key = var.instance_ssh_key
   template_name = "private"
-  init_sh_file = "${var.private_init_sh_file} ${module.vpc.id}" # HOST OF RDS IS PASSED AS PARAMS TO A FILE
+  init_sh_file = "${var.private_init_sh_file} ${module.persistance.rds_endpoint}" # HOST OF RDS IS PASSED AS PARAMS TO A FILE
   iam_instance_profile_arn = module.instance_profile.profile_arn
 }
 
@@ -89,3 +89,17 @@ resource "aws_autoscaling_group" "my-asg" {
     module.vpc.public_subnet_2_id
   ]
 }
+#####
+
+module "persistance" {
+  source = "./modules/persistance" 
+
+  dynamodb_table_name = var.dynamodb_table_name
+  dynamodb_field_name = var.dynamodb_field_name
+
+  db_user = var.db_user
+  db_pw = var.db_pw
+  rds_group_ids = [module.vpc.private_subnet_1_id, module.vpc.private_subnet_2_id]
+  cidr_block = ["10.0.3.0/24", "10.0.4.0/24"]   # ONLY PRIVATE
+}
+
