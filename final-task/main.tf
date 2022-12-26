@@ -7,6 +7,16 @@ module "vpc" {
   source = "./modules/vpc"
 
   instance_ssh_key = var.instance_ssh_key
+  vpc_cidr_block = var.vpc_cidr_block
+  sb_public_cidr_block_1 = var.sb_public_cidr_block_1
+  sb_public_cidr_block_2 = var.sb_public_cidr_block_2
+  sb_private_cidr_block_1 = var.sb_private_cidr_block_1
+  sb_private_cidr_block_2 = var.sb_private_cidr_block_2
+
+  az_public_1 = var.az_public_1
+  az_public_2 = var.az_public_2
+  az_private_1 = var.az_private_1
+  az_private_2 = var.az_private_2
 }
 
 module "sg_public" {
@@ -22,7 +32,7 @@ module "sg_private" {
 
   sg_name = "sg_private"
   vpc_id = module.vpc.vpc_id
-  cidr_block = ["10.0.1.0/24", "10.0.2.0/24"]
+  cidr_block = [var.sb_public_cidr_block_1, var.sb_public_cidr_block_2]
 }
 
 module "instance_profile" {
@@ -100,6 +110,6 @@ module "persistance" {
   db_user = var.db_user
   db_pw = var.db_pw
   rds_group_ids = [module.vpc.private_subnet_1_id, module.vpc.private_subnet_2_id]
-  cidr_block = ["10.0.3.0/24", "10.0.4.0/24"]   # ONLY PRIVATE
+  cidr_block = [var.sb_private_cidr_block_1, var.sb_private_cidr_block_2]   # ONLY PRIVATE
 }
 

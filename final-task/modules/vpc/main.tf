@@ -1,5 +1,5 @@
 resource "aws_vpc" "my-vpc" {
-  cidr_block       = "10.0.0.0/16"
+  cidr_block       = var.vpc_cidr_block
   instance_tenancy = "default"
 
   tags = {
@@ -17,9 +17,9 @@ resource "aws_internet_gateway" "my-igw" {
 
 resource "aws_subnet" "public-sb-1" {
   vpc_id     = aws_vpc.my-vpc.id
-  cidr_block = "10.0.1.0/24"
+  cidr_block = var.sb_public_cidr_block_1
   map_public_ip_on_launch = true
-  availability_zone = "us-west-2a"
+  availability_zone = var.az_public_1
 
   tags = {
     Name = "public-sb"
@@ -28,9 +28,9 @@ resource "aws_subnet" "public-sb-1" {
 
 resource "aws_subnet" "public-sb-2" {
   vpc_id     = aws_vpc.my-vpc.id
-  cidr_block = "10.0.2.0/24"
+  cidr_block = var.sb_public_cidr_block_2
   map_public_ip_on_launch = true
-  availability_zone = "us-west-2b"
+  availability_zone = var.az_public_2
 
   tags = {
     Name = "public-sb"
@@ -63,9 +63,9 @@ resource "aws_route_table_association" "public-route-to-public-subnet-2" {
 
 resource "aws_subnet" "private-sb-1" {
   vpc_id     = aws_vpc.my-vpc.id
-  cidr_block = "10.0.3.0/24"
+  cidr_block = var.sb_private_cidr_block_1
   map_public_ip_on_launch = false
-  availability_zone = "us-west-2c"
+  availability_zone = var.az_private_1
 
   tags = {
     Name = "private-sb"
@@ -74,9 +74,9 @@ resource "aws_subnet" "private-sb-1" {
 
 resource "aws_subnet" "private-sb-2" {
   vpc_id     = aws_vpc.my-vpc.id
-  cidr_block = "10.0.4.0/24"
+  cidr_block = var.sb_private_cidr_block_2
   map_public_ip_on_launch = false
-  availability_zone = "us-west-2d"
+  availability_zone = var.az_private_2
 
   tags = {
     Name = "private-sb"
