@@ -1,9 +1,11 @@
 ######
 - CLI user has all required access to create VPC, SQS, SNS, EC2, DynamoDB, RDC, IAM, S3
 - task is located in infra.docx
+- used modules. For user data with vars used `data.template_file`
 - run from root project directory `sh scripts/init-s3.sh`
 - run `terraform init`
 - run `terraform apply`
+- run locally
 - ssh to instance
 - execute sql
 - execute dynamo db
