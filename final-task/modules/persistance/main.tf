@@ -31,6 +31,7 @@ resource "aws_db_subnet_group" "rds_group_default" {
 resource "aws_security_group" "my_security_group_rds" {
     description = "Enable Postgres access"
     name = "my_security_group_rds"
+    vpc_id = var.vpc_id
 
     ingress {
         description      = "Postgresql"

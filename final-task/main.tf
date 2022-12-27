@@ -39,12 +39,20 @@ module "instance_profile" {
   source = "./modules/access"
 }
 
+data "template_file" "private_init_script" {
+  template = "${filebase64(var.private_init_sh_file)}"
+
+  vars = {
+    rds_host = "${module.persistance.rds_endpoint}"
+  }
+}
+
 module "ec2_template_private" {
   source = "./modules/ec2-template"
 
   instance_ssh_key = var.instance_ssh_key
   template_name = "private"
-  init_sh_file = "${var.private_init_sh_file} ${module.persistance.rds_endpoint}" # HOST OF RDS IS PASSED AS PARAMS TO A FILE
+  user_data = "${data.template_file.private_init_script.rendered}"
   iam_instance_profile_arn = module.instance_profile.profile_arn
 }
 
@@ -54,7 +62,7 @@ module "ec2_template_public" {
   vpc_security_group_id = module.sg_public.id
   instance_ssh_key = var.instance_ssh_key
   template_name = "public"
-  init_sh_file = var.public_init_sh_file
+  user_data = "${filebase64(var.public_init_sh_file)}"
   iam_instance_profile_arn = module.instance_profile.profile_arn
 }
 
@@ -111,5 +119,28 @@ module "persistance" {
   db_pw = var.db_pw
   rds_group_ids = [module.vpc.private_subnet_1_id, module.vpc.private_subnet_2_id]
   cidr_block = [var.sb_private_cidr_block_1, var.sb_private_cidr_block_2]   # ONLY PRIVATE
+  vpc_id = module.vpc.vpc_id
+}
+
+module "notification" {
+  source = "./modules/notification"
+
+  email_to_subscribe = var.email_to_subscribe
+  sns_topic_name = var.sns_topic_name
+  sqs_name = var.sqs_name
+}
+
+module "load-balancer" {
+  source = "./modules/load-balancer"
+
+  vpc_id = module.vpc.vpc_id
+  subnet_ids = [module.vpc.public_subnet_1_id, module.vpc.public_subnet_2_id]
+  health_check_path = var.health_check_path
+}
+
+######MAP LOAD BALANCER TO ASG
+resource "aws_autoscaling_attachment" "asg_attachment_to_lb" {
+  autoscaling_group_name = aws_autoscaling_group.my-asg.id
+  lb_target_group_arn    = module.load-balancer.target_group_arn
 }
 

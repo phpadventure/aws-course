@@ -18,3 +18,9 @@ az_public_1 = "us-west-2a"
 az_public_2 = "us-west-2b"
 az_private_1 = "us-west-2c"
 az_private_2 = "us-west-2d"
+
+email_to_subscribe = "andriy.osf@gmail.com"
+sns_topic_name = "edu-lohika-training-aws-sns-topic"
+sqs_name = "edu-lohika-training-aws-sqs-queue"
+
+health_check_path = "/health"

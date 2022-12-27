@@ -5,5 +5,5 @@ sudo yum update -y
 sudo yum install java-1.8.0-openjdk -y
 
 #RDS HOST passed as first argument
-export RDS_HOST=$1
+export RDS_HOST=${rds_host}
 sudo java -jar /private-server.jar

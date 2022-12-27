@@ -27,3 +27,8 @@ variable "cidr_block" {
     description = "Cidr block list"
     type = list(string)
 }
+
+variable "vpc_id" {
+    description = "VPC ID"
+    type = string
+}

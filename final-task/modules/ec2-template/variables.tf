@@ -26,8 +26,8 @@ variable "template_name" {
     type = string
 }
 
-variable "init_sh_file" {
-    description = "User data file path"
+variable "user_data" {
+    description = "User data content"
     type = string
 }
 

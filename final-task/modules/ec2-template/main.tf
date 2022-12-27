@@ -21,7 +21,6 @@ resource "aws_launch_template" "my_ec2_template" {
   iam_instance_profile {
     arn = var.iam_instance_profile_arn
   }
-  
-  user_data = "${file(var.init_sh_file)}"
-  #filebase64("${path.module}/example.sh")
+
+  user_data = var.user_data
 }

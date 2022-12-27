@@ -77,3 +77,23 @@ variable "az_private_2" {
     description = "Private az 2"
     type = string
 }
+
+variable "email_to_subscribe" {
+    description = "Email for sns"
+    type = string
+}
+
+variable "sns_topic_name" {
+    description = "SNS topc name"
+    type = string
+}
+
+variable "sqs_name" {
+    description = "SQS name"
+    type = string
+}
+
+variable "health_check_path" {
+    description = "Health check path"
+    type = string
+}
