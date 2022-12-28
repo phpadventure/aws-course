@@ -26,9 +26,10 @@
 ![dynamo_db_contnent](https://github.com/phpadventure/aws-course/blob/master/final-task/screenshots/dynamo_db_contnent.png)
 - `sudo chmod 400 /key.pem`
 - ssh to private instance public  `sudo ssh ec2-user@10.0.3.18  -i /key.pem`
-- login into psql client `psql -U rootuser -h terraform-20221228210556780400000003.cxzyr3ymhgsa.us-west-2.rds.amazonaws.com  -p 5432 -d postgres`
+- login into psql client `psql -U rootuser -h terraform-20221228212954270400000001.cxzyr3ymhgsa.us-west-2.rds.amazonaws.com  -p 5432 -d postgres`
 - use `\l` to show all dbs
 - use `\c EduLohikaTrainingAwsRds`
 - use `SELECT * FROM LOGS;`
+![rds_result](https://github.com/phpadventure/aws-course/blob/master/final-task/screenshots/rds_result.png)
 - to destroy run `terraform destroy`
 - clean up s3 `sh scripts/delete-s3.sh`
