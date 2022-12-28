@@ -1,0 +1,28 @@
+{
+  "version": 4,
+  "terraform_version": "0.14.3",
+  "serial": 481,
+  "lineage": "66a26ca6-985b-5895-84a9-d13d7bb9be2b",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "aws_autoscaling_attachment",
+      "name": "asg_attachment_to_lb",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "alb_target_group_arn": null,
+            "autoscaling_group_name": "terraform-20221228181152423700000005",
+            "elb": null,
+            "id": "terraform-20221228181152423700000005-20221228192134690600000002",
+            "lb_target_group_arn": "arn:aws:elasticloadbalancing:us-west-2:649094558971:targetgroup/tg/134dc488251e9fa3"
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    }
+  ]
+}
