@@ -20,6 +20,7 @@ resource "aws_db_instance" "postgresql_rds_test" {
   skip_final_snapshot  = true
   vpc_security_group_ids = [aws_security_group.my_security_group_rds.id]
   db_subnet_group_name = aws_db_subnet_group.rds_group_default.name
+  db_name               = "EduLohikaTrainingAwsRds" # HARD CODE DB NAME as connection failed
 }
 
 resource "aws_db_subnet_group" "rds_group_default" {

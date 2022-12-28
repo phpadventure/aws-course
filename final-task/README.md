@@ -26,7 +26,7 @@
 ![dynamo_db_contnent](https://github.com/phpadventure/aws-course/blob/master/final-task/screenshots/dynamo_db_contnent.png)
 - `sudo chmod 400 /key.pem`
 - ssh to private instance public  `sudo ssh ec2-user@10.0.3.18  -i /key.pem`
-- login into psql client `psql -U rootuser -h terraform-20221228181146552700000003.cxzyr3ymhgsa.us-west-2.rds.amazonaws.com  -p 5432 -d postgres`
+- login into psql client `psql -U rootuser -h terraform-20221228210556780400000003.cxzyr3ymhgsa.us-west-2.rds.amazonaws.com  -p 5432 -d postgres`
 - use `\l` to show all dbs
 - use `\c EduLohikaTrainingAwsRds`
 - use `SELECT * FROM LOGS;`

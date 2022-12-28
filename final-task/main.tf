@@ -40,7 +40,7 @@ module "instance_profile" {
 }
 
 data "template_file" "private_init_script" {
-  template = "${filebase64(var.private_init_sh_file)}"
+  template = "${file(var.private_init_sh_file)}"
 
   vars = {
     rds_host = "${module.persistance.rds_endpoint}"
@@ -52,8 +52,12 @@ module "ec2_template_private" {
 
   instance_ssh_key = var.instance_ssh_key
   template_name = "private"
-  user_data = "${data.template_file.private_init_script.rendered}"
+  user_data = "${base64encode(data.template_file.private_init_script.rendered)}"
   iam_instance_profile_arn = module.instance_profile.profile_arn
+
+  depends_on = [
+    module.persistance
+  ]
 }
 
 module "ec2_template_public" {
