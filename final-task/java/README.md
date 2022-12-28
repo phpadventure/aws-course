@@ -4,7 +4,7 @@ Set of jars represents distributed calculator application. All jars require java
 
 * **calc-client-1.0-SNAPSHOT.jar** - client application, should be executed on local machine. Continuously sends HTTP requests to the provided endpoint and prints responses. Command to run client jar:
     ```
-    java -cp calc-client-1.0-SNAPSHOT-jar-with-dependencies.jar CalcClient <ELB’s DNS name> 
+    java -cp calc-client-1.0-SNAPSHOT-jar-with-dependencies.jar CalcClient lb-1568405298.us-west-2.elb.amazonaws.com
     
     ```
 
