@@ -110,6 +110,11 @@ resource "aws_autoscaling_group" "my-asg" {
     module.vpc.public_subnet_1_id,
     module.vpc.public_subnet_2_id
   ]
+
+  #### THIS IS IMPROTANT FIX FOR ASG NOT TO REFRESH EACH TIME TARGET GROUP
+  lifecycle {
+    ignore_changes = [load_balancers, target_group_arns]
+  }
 }
 #####
 
